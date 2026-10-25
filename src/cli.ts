@@ -2,7 +2,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
-import { play, SOUND_DIR } from './play.js';
+import { parsePlayArgs, play, SOUND_DIR } from './play.js';
 import { BUNDLED } from './sounds.js';
 import { addHook, EVENTS, removeHooks, type Settings } from './settings.js';
 
@@ -10,13 +10,14 @@ const claudeDir = join(homedir(), '.claude');
 const settingsPath = join(claudeDir, 'settings.json');
 const legacySound = join(claudeDir, 'sounds', 'done.wav');
 
-const USAGE = `Usage: donechime <install|uninstall|play [event]>
+const USAGE = `Usage: donechime <install|uninstall|play [event] [--volume 0-100]>
 
   install     Write bundled sounds and add ${EVENTS.join(', ')} hooks
   uninstall   Remove the hooks and bundled sounds
-  play        Hook entry point: reads hook JSON on stdin (or pass an event name)
+  play        Hook entry point: reads hook JSON on stdin (or pass an event name);
+              --volume sets loudness (default 100)
 
-Config: ~/.donechime.json, e.g. { "Notification": "C:/sounds/x.wav", "Stop": false, "cooldownMs": 2000 }`;
+Config: ~/.donechime.json, e.g. { "Notification": "C:/sounds/x.wav", "Stop": false, "cooldownMs": 2000, "volume": 60 }`;
 
 function readSettings(): Settings {
   if (!existsSync(settingsPath)) return {};
@@ -33,9 +34,9 @@ function main(args: string[]): number {
   const [cmd] = args;
   if (cmd === 'play') {
     // Hooks must never block or fail the agent: exit 0 no matter what.
-    const event = args[1];
+    const { event, volume } = parsePlayArgs(args.slice(1));
     const stdin = event || process.stdin.isTTY ? '' : readFileSync(0, 'utf8');
-    play(stdin, event);
+    play(stdin, event, volume);
     return 0;
   }
   if (cmd === 'install') {
