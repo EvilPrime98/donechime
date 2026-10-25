@@ -1,0 +1,11 @@
+{
+  "name": "donechime",
+  "owner": { "name": "AminPerez" },
+  "plugins": [
+    {
+      "name": "donechime",
+      "source": "./",
+      "description": "Distinct sounds for done, needs-you and failed in Claude Code. Windows only."
+    }
+  ]
+}
