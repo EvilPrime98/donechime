@@ -2,6 +2,11 @@
 
 **Know what your agent needs by ear.**
 
+[![npm version](https://img.shields.io/npm/v/donechime)](https://www.npmjs.com/package/donechime)
+[![npm downloads](https://img.shields.io/npm/dm/donechime)](https://www.npmjs.com/package/donechime)
+[![CI](https://github.com/EvilPrime98/donechime/actions/workflows/ci.yml/badge.svg)](https://github.com/EvilPrime98/donechime/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/npm/l/donechime)](LICENSE)
+
 Claude Code runs for minutes at a time. You tab away, and then you either check too early or find out ten minutes late that it was waiting on you. donechime gives each situation its own sound, so you can ignore the terminal until it asks.
 
 | Sound        | Plays when                                                  | Hook           |
