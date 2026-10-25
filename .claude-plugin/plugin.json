@@ -1,0 +1,7 @@
+{
+  "name": "donechime",
+  "description": "Know what your agent needs by ear: distinct sounds for done, needs-you and failed. Windows only. Unofficial, not affiliated with Anthropic.",
+  "author": { "name": "AminPerez" },
+  "license": "MIT",
+  "keywords": ["hook", "sound", "windows", "notification"]
+}
