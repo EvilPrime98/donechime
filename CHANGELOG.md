@@ -1,5 +1,12 @@
 # donechime
 
+## 0.2.0
+
+### Minor Changes
+
+- 21636f7: Ship as a Claude Code plugin (manifest, hooks, marketplace) and write the bundled sounds on first play so no `donechime install` is needed.
+- 21636f7: Add `--volume 0-100` to `donechime play` and a `volume` key in `~/.donechime.json`.
+
 ## 0.1.1
 
 ### Patch Changes

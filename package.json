@@ -1,6 +1,6 @@
 {
   "name": "donechime",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Know what your agent needs by ear: distinct sounds for done, needs-you and failed in Claude Code, via hooks. Windows. Unofficial, not affiliated with Anthropic.",
   "type": "module",
   "exports": {
